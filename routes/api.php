@@ -27,3 +27,11 @@ Route::group([
         Route::get('user', 'AuthController@user');
     });
 });
+
+Route::group([
+    'prefix' => 'curricular_component'],
+    function() {
+        Route::get('/', 'CurricularComponentController@index');
+        Route::get('/{code}', 'CurricularComponentController@show');
+
+    });
