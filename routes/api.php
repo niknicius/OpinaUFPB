@@ -35,3 +35,11 @@ Route::group([
         Route::get('/{code}', 'CurricularComponentController@show');
 
     });
+
+Route::group([
+    'prefix' => 'teacher'],
+    function() {
+        Route::get('/', 'TeacherController@index');
+        Route::get('/{id}', 'TeacherController@show');
+
+    });

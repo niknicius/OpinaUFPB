@@ -14,7 +14,7 @@ class CurricularComponentController extends Controller
      */
     public function index()
     {
-        return CurricularComponent::all();
+        return CurricularComponent::all()->teacher;
     }
 
     /**
