@@ -12,10 +12,20 @@ class CurricularComponentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return CurricularComponent::all()->teacher;
-    }
+    public function index(Request $request){
+
+        $components = CurricularComponent::all();
+
+        if($request->expand) {
+            foreach ($components as $c){
+                $c->grade = $c->grade()->get();
+            }
+        }
+
+        return $components;
+
+}
+
 
     /**
      * Show the form for creating a new resource.

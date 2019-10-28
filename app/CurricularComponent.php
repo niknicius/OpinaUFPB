@@ -10,9 +10,8 @@ class CurricularComponent extends Model
         'code', 'name', 'workload'
     ];
 
-    public function teacher(){
-
-        return $this->hasOne('App\Teacher');
-
+    public function grade(){
+        return $this->hasMany('App\Grade');
     }
+
 }

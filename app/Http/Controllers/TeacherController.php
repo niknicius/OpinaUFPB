@@ -7,9 +7,17 @@ use App\Teacher;
 
 class TeacherController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return Teacher::all();
+        $teachers = Teacher::all();
+
+        if($request->query('expand')) {
+            foreach ($teachers as $t) {
+                $t->grades = $t->grade()->get();
+            }
+        }
+
+        return $teachers;
     }
 
     public function show(Request $request){
